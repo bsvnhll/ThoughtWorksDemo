@@ -1,0 +1,23 @@
+trigger: none
+pr: none
+steps:
+- task: AzureCLI@1
+  displayName: 'Create AKS and Application Gateway Infrastructure'
+  inputs:
+    azureSubscription: AzureDevopsAuth
+    scriptLocation: inlineScript
+    inlineScript: |
+     export ARM_CLIENT_ID=$(ServicePrincipalId)
+     export ARM_CLIENT_SECRET=$(servicePrincipalPassword)
+     export ARM_SUBSCRIPTION_ID=$(subscriptionId)
+     export ARM_TENANT_ID=$(tenantId)
+     export TF_VAR_client_id=$(ServicePrincipalId)
+     export TF_VAR_client_secret=$(servicePrincipalPassword)
+     export TF_VAR_subscription_id=$(subscriptionId)
+     export TF_VAR_tenant_id=$(tenantId)
+     export TF_VAR_cert_key_password=$(certificatePassword)
+     
+     chmod +x settf.sh
+     ./settf.sh $(action) $(region) $(env) $(planState)
+    workingDirectory: 'components/coupon_app'
+  enabled: true

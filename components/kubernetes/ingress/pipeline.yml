@@ -1,0 +1,26 @@
+trigger: none
+pr: none
+steps:
+- task: Kubernetes@1
+  displayName: 'apply coupon service'
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: AzureDevopsAuth
+    azureResourceGroup: 'euw-dev-010-couponapi-rg'
+    kubernetesCluster: 'couponservice-cluster'
+    command: apply
+    useConfigurationFile: true
+    configuration: 'components/kubernetes/ingress/coupon-service.yaml'
+  enabled: true
+
+- task: Kubernetes@1
+  displayName: 'apply coupon ingress'
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: AzureDevopsAuth
+    azureResourceGroup: 'euw-dev-010-couponapi-rg'
+    kubernetesCluster: 'couponservice-cluster'
+    command: apply
+    useConfigurationFile: true
+    configuration: 'components/kubernetes/ingress/coupon-ingress.yaml'
+  enabled: true

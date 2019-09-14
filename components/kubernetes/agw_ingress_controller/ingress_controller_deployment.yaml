@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: #{namespace}#-ingress-controller
+  labels:
+    app: #{namespace}#-ingress-azure
+  namespace: #{namespace}#
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: #{namespace}#-ingress-azure
+  template:
+    metadata:
+      labels:
+        app: #{namespace}#-ingress-azure
+        aadpodidbinding: #{namespace}#-ingress-azure
+    spec:
+      serviceAccountName: #{namespace}#-sa-ingress-controller
+      automountServiceAccountToken: true
+      containers:
+      - name: ingress-azure
+        image: mcr.microsoft.com/azure-application-gateway/kubernetes-ingress:0.7.1
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: #{namespace}#-cm-ingress-controller

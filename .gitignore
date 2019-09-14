@@ -1,0 +1,16 @@
+# Editors
+.vscode
+
+# Terraform
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform*.log
+crash.log
+out.terraform
+*.tfplan
+.terraform.tfstate.lock.info
+
+# Certificates
+/certificates/*/private_key.pem
+node_modules

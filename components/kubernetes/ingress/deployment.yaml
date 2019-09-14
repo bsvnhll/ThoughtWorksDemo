@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demoapp
+  namespace: couponapi
+spec:
+  selector:
+      matchLabels:
+        app: demoapp
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2        # https://github.com/ContainerSolutions/k8s-deployment-strategies
+      maxUnavailable: 0
+  template:
+      metadata:
+        labels:
+            app: demoapp
+      spec:
+        containers:
+        - name: demoapp
+          image: mediawiki:latest
+          imagePullPolicy: Always
+          resources:
+          ports:
+          - containerPort: 80

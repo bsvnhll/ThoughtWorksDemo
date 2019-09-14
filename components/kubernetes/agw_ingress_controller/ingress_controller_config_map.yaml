@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: #{namespace}#-cm-ingress-controller
+  labels:
+    app: #{namespace}#-ingress-azure
+  namespace: #{namespace}#
+data:
+  APPGW_SUBSCRIPTION_ID: #{subscription_id}#
+  APPGW_RESOURCE_GROUP: #{resource_group_name}#
+  APPGW_NAME: #{couponapi_appgateway}#
+  APPGW_VERBOSITY_LEVEL: "3"
+  KUBERNETES_WATCHNAMESPACE: #{namespace}#
