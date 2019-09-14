@@ -21,8 +21,8 @@ Componets containes scripts for creating Azure application gateway component, AK
 It also, containes all the kubernates configs for creatig application gateway as ingress controller, kubernates ingress,  kubernates service and Deployments for MediaWiki and mysql DB.
 
 teraform scripts for creating kubernetes cluster in Azure are in this path - ## components\coupon_app
-Kubernetes configuration files are at - ## components\kubernetes
-All the variable files are at ## components\group_vars
+Kubernetes configuration files are at - ### components\kubernetes
+All the variable files are at ### components\group_vars
 
 pipeline.yaml files are Azure devops yaml files can be run in Azure devops CI tool. 
 
