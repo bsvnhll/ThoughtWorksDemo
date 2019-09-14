@@ -6,7 +6,7 @@ subscription_id = "subscriptionid"
 demo_team_number = "010"
 demo_environment = "ppe"
 demo_team_name = "svs"
-sp_principal_id = "a0838236-f2a3-4d20-83de-1fbf68de4f73"
+sp_principal_id = "service principal id"
 
 #AKS Configuration
 aks_cluster_name = "couponservice-cluster"
